@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace AddressBookSystem276
 {
-    public class AddressBook
+    internal class AddressBook
     {
-        //storing in user defiened data type list
+        //Creating instance of generic List
         List<Contact> data = new List<Contact>();
-        public  void CreateContacts()
+        //UC1- Create Contact
+        public void CreateContacts()
         {
             //Creating a object to access non-static method (Contact Class)
             Contact contact = new Contact();
@@ -40,11 +41,12 @@ namespace AddressBookSystem276
             contact.Email = Console.ReadLine();
 
             data.Add(contact); //contact added in generic list
+            Console.WriteLine("\nContact saved sucessfully...!");
         }
+        //UC2-Display Contacts
         public void DisplayContact()
         {
-            CreateContacts(); //before display contact details need to take user details
-            Console.WriteLine("\nHere is the contact details saved.\n");
+            Console.WriteLine("\nHere is the contact details : \n");
             foreach (Contact record in data)
             {
                 Console.WriteLine("First Name : " + record.FirstName);
@@ -57,10 +59,10 @@ namespace AddressBookSystem276
                 Console.WriteLine("Email Id : " + record.Email);
             }
         }
+        //UC3- Edit Contact
         public void EditContact()
         {
-            DisplayContact(); //to edit the contact need to save the contact details first
-            Console.WriteLine("\nTo Edit Contact Enter  First Name\n");
+            Console.WriteLine("\nTo Edit Contact Enter First Name\n");
             string name = Console.ReadLine();
             foreach (var record in data)
             {
@@ -74,12 +76,10 @@ namespace AddressBookSystem276
                         case 1:
                             Console.WriteLine("Enter the New First Name: ");
                             record.FirstName = Console.ReadLine();
-                            DisplayContact();
                             break;
                         case 2:
                             Console.WriteLine("Enter the New Last Name: ");
                             record.LastName = Console.ReadLine();
-                            DisplayContact();
                             break;
                         case 3:
                             Console.WriteLine("Enter the New Address: ");
@@ -112,6 +112,38 @@ namespace AddressBookSystem276
                 else
                 {
                     Console.WriteLine("Contact Not Found. Enter the valid name!");
+                }
+
+            }
+            foreach (var record in data.ToList())
+            {
+                Console.WriteLine("First Name : " + record.FirstName);
+                Console.WriteLine("Last Name : " + record.LastName);
+                Console.WriteLine("Address : " + record.Address);
+                Console.WriteLine("City : " + record.City);
+                Console.WriteLine("State : " + record.State);
+                Console.WriteLine("ZIP Code : " + record.ZIPCode);
+                Console.WriteLine("Phone Number : " + record.PhoneNumber);
+                Console.WriteLine("Email Id : " + record.Email);
+
+            }
+        }
+        //UC4- Delete Contact
+        public void DeleteContact()
+        {
+            DisplayContact();
+            Console.WriteLine("Enter the Firstname of the person you would like to remove.");
+            string name = Console.ReadLine();
+            foreach (var record in data.ToList())
+            {
+                if (record.FirstName.ToUpper() == name.ToUpper())
+                {
+                    data.Remove(record);
+                    Console.WriteLine("Contact is deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
                 }
             }
         }
