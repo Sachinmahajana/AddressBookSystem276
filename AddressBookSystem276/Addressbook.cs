@@ -13,35 +13,41 @@ namespace AddressBookSystem276
         //UC1- Create Contact
         public void CreateContacts()
         {
-            //Creating a object to access non-static method (Contact Class)
-            Contact contact = new Contact();
-            //reading data and storing in set method/properties 
-            Console.Write("Enter First Name : ");
-            contact.FirstName = Console.ReadLine();
-            //Last Name 
-            Console.Write("Enter Last Name : ");
-            contact.LastName = Console.ReadLine();
-            //Address
-            Console.Write("Enter Address : ");
-            contact.Address = Console.ReadLine();
-            //City
-            Console.Write("Enter City Name : ");
-            contact.City = Console.ReadLine();
-            //State Name 
-            Console.Write("Enter State Name : ");
-            contact.State = Console.ReadLine();
-            //ZIP Code
-            Console.Write("Enter ZIP Code : ");
-            contact.ZIPCode = Convert.ToInt32(Console.ReadLine());
-            //Phone Number
-            Console.Write("Enter Phone Number : ");
-            contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-            //Email Id :
-            Console.Write("Enter Email Id : ");
-            contact.Email = Console.ReadLine();
+            //UC 5 - Adding Multiple Contacts
+            Console.WriteLine("Enter how many contacts you want to add?");
+            int howMany = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= howMany; i++)
+            {
+                //Creating a object to access non-static method (Contact Class)
+                Contact contact = new Contact();
+                //reading data and storing in set method/properties 
+                Console.Write("Enter First Name : ");
+                contact.FirstName = Console.ReadLine();
+                //Last Name 
+                Console.Write("Enter Last Name : ");
+                contact.LastName = Console.ReadLine();
+                //Address
+                Console.Write("Enter Address : ");
+                contact.Address = Console.ReadLine();
+                //City
+                Console.Write("Enter City Name : ");
+                contact.City = Console.ReadLine();
+                //State Name 
+                Console.Write("Enter State Name : ");
+                contact.State = Console.ReadLine();
+                //ZIP Code
+                Console.Write("Enter ZIP Code : ");
+                contact.ZIPCode = Convert.ToInt32(Console.ReadLine());
+                //Phone Number
+                Console.Write("Enter Phone Number : ");
+                contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+                //Email Id :
+                Console.Write("Enter Email Id : ");
+                contact.Email = Console.ReadLine();
 
-            data.Add(contact); //contact added in generic list
-            Console.WriteLine("\nContact saved sucessfully...!");
+                data.Add(contact); //contact added in generic list
+                Console.WriteLine("\nContact saved sucessfully...!");
+            }
         }
         //UC2-Display Contacts
         public void DisplayContact()
